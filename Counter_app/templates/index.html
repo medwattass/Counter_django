@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+
+    <div class="container">
+        <h1 class="text-dark text-center h-auto" >Actual number of visits</h1>
+        <h4 class="text-dark text-center h-auto" >{{request.session.visited_counter}} times</h4>
+        <h1 class="text-dark text-center h-auto" >Counter</h1>
+        <h4 class="text-dark text-center h-auto" >{{request.session.counter}} times</h4>
+        <form class="form-group text-center" action='/destroy_session' method='post'>
+            {% csrf_token %}
+            <button class="form-group btn btn-dark" type='submit'>Reset</button>
+        </form>
+        <form class="form-group text-center" action='/add_2' method='post'>
+            {% csrf_token %}
+            <button class="form-group btn btn-dark" type='submit'>increment by +2</button>
+        </form>
+        <form class="form-group text-center" action='/add_custom' method='post'>
+            {% csrf_token %}
+            <label class="form-label" for="incrementation">Incrementation: </label>
+            <input class="form-control mb-4" type="number" name="incrementation" required>
+            <button class="form-control btn btn-dark" type='submit'>Increment</button>
+        </form>
+    </div>
+
+</body>
+
+</html>
